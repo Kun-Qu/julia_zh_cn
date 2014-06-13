@@ -1,18 +1,18 @@
 .. _stdlib-linalg:
 
-Linear Algebra
+线性代数
 --------------
 
 .. module:: Base.LinAlg
 
 .. currentmodule:: Base
 
-Linear algebra functions in Julia are largely implemented by calling functions from `LAPACK <http://www.netlib.org/lapack/>`_.  Sparse factorizations call functions from `SuiteSparse <http://www.suitesparse.com/>`_.
+Julia 的线性代数函数主要基于对`LAPACK <http://www.netlib.org/lapack/>`_的调用，而稀疏矩阵分解是调用`SuiteSparse <http://www.suitesparse.com/>`_.
 
 .. function:: *(A, B)
    :noindex:
 
-   Matrix multiplication
+   矩阵乘法
 
 .. function:: \\(A, B)
    :noindex:
@@ -21,11 +21,11 @@ Linear algebra functions in Julia are largely implemented by calling functions f
 
 .. function:: dot(x, y)
 
-   Compute the dot product. For complex vectors, the first vector is conjugated.
+   向量点积，对于复向量，x会先取共阨
 
 .. function:: cross(x, y)
 
-   Compute the cross product of two 3-vectors.
+   两个三维向量的叉乘
 
 .. function:: rref(A)
 
@@ -33,15 +33,15 @@ Linear algebra functions in Julia are largely implemented by calling functions f
 
 .. function:: factorize(A)
 
-   Compute a convenient factorization (including LU, Cholesky, Bunch-Kaufman, Triangular) of A, based upon the type of the input matrix. The return value can then be reused for efficient solving of multiple systems. For example: ``A=factorize(A); x=A\\b; y=A\\C``.
+   计算矩阵A的合适的分解(including LU, Cholesky, Bunch-Kaufman, Triangular), 根据A的具体类型来选择最合适的分解操作. 返回值可重用以便有效的求解多个系统. 例如: ``A=factorize(A); x=A\\b; y=A\\C``.
 
 .. function:: factorize!(A)
 
-   ``factorize!`` is the same as :func:`factorize`, but saves space by overwriting the input ``A``, instead of creating a copy.
+   ``factorize!`` 与 :func:`factorize`相同, 但是A被覆盖以节省存储空间
 
 .. function:: lu(A) -> L, U, p
 
-   Compute the LU factorization of ``A``, such that ``A[p,:] = L*U``.
+   计算``A``的LU分解,  ``A[p,:] = L*U``.
 
 .. function:: lufact(A, [pivot=true]) -> F
 
